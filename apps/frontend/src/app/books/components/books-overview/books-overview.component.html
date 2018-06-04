@@ -1,0 +1,16 @@
+<clr-datagrid>
+  <clr-dg-column>ID</clr-dg-column>
+  <clr-dg-column>Title</clr-dg-column>
+  <clr-dg-column>Author</clr-dg-column>
+
+  <ng-container *ngIf="books$ | async as books">
+    <clr-dg-row *ngFor="let book of books">
+      <clr-dg-cell>{{book.id}}</clr-dg-cell>
+      <clr-dg-cell>{{book.title}}</clr-dg-cell>
+      <clr-dg-cell>{{book.author}}</clr-dg-cell>
+    </clr-dg-row>
+    <clr-dg-footer>{{books.length}} books</clr-dg-footer>
+  </ng-container>
+</clr-datagrid>
+
+<button class="btn btn-primary" routerLink="edit/0">Add</button>

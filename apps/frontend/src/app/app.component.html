@@ -1,0 +1,16 @@
+<clr-main-container>
+  <div class="progress loop" *ngIf="loading">
+    <progress></progress>
+  </div>
+  <clr-header>
+    <div class="branding">
+      <a href="..." class="nav-link">
+        <clr-icon shape="vm-bug"></clr-icon>
+        <span class="title">Them books</span>
+      </a>
+    </div>
+  </clr-header>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</clr-main-container>
