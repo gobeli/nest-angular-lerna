@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { LoadingService } from './core/services/loading.service';
-import { tap, delay } from 'rxjs/operators';
+import { tap, delay, debounce, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +12,9 @@ export class AppComponent {
   loading: boolean;
 
   constructor(private loadingService: LoadingService) {
-    this.loadingService.loadingObservable$
-      .pipe(delay(1)) // Fix expression has been changed...
+    // Only show the loading bar, if the loading state lasts for more than 50ms
+    this.loadingService.loading$
+      .pipe(debounceTime(50))
       .subscribe(this.handleLoading().bind(this));
   }
 

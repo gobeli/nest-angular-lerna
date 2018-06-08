@@ -1,0 +1,14 @@
+<form [formGroup]="bookForm" (submit)="onSubmit()">
+  <section class="form-block">
+    <label>Book</label>
+    <div class="form-group">
+      <label>Title</label>
+      <input type="text" formControlName="title">
+    </div>
+    <div class="form-group">
+      <label>Author</label>
+      <input type="text" formControlName="author">
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="!bookForm.valid" [clrLoading]="loading$ | async">Submit</button>
+  </section>
+</form>

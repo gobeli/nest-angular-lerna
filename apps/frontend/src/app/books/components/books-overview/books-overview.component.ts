@@ -13,9 +13,21 @@ import { tap } from 'rxjs/operators';
 export class BooksOverviewComponent implements OnInit {
   books$: Observable<Book[]>;
   loading$: Observable<boolean>;
+  bookToDelete: Book;
   constructor(private booksService: BooksService) {}
 
   ngOnInit() {
+    this.load();
+  }
+
+  load() {
     this.books$ = this.booksService.getAll();
+  }
+
+  delete(book: Book) {
+    this.booksService.delete(book).subscribe(() => {
+      this.load();
+      this.bookToDelete = null;
+    });
   }
 }
