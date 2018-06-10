@@ -11,10 +11,6 @@ export class BooksController extends CrudController<BookEntity> {
 
   @Get()
   async getAll(): Promise<any> {
-    return new Promise(resolve => {
-      setTimeout(async () => {
-        resolve(await this.service.findAll());
-      }, 3000);
-    });
+    return this.service.findAll();
   }
 }

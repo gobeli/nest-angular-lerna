@@ -1,12 +1,23 @@
 {
+  "name": "nest-angular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "lerna run --parallel watch",
-    "build": "lerna run build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run watch --prefix apps/backend\" \"npm run watch --prefix apps/frontend\""
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gobeli/nest-angular-lerna.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gobeli/nest-angular-lerna/issues"
+  },
+  "homepage": "https://github.com/gobeli/nest-angular-lerna#readme",
   "devDependencies": {
-    "lerna": "^2.11.0"
-  },
-  "dependencies": {
-    "rxjs": "^6.2.0"
+    "concurrently": "^3.5.1"
   }
 }

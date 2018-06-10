@@ -38,6 +38,6 @@ export abstract class CrudController<T extends CrudEntity> {
   @Delete(':id')
   async delete(@Param() params) {
     const e = await this.service.findById(params.id);
-    return this.service.remove(params.id);
+    this.service.remove(params.id);
   }
 }

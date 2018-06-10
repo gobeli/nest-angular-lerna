@@ -2,12 +2,7 @@
   "name": "@app/nest-crud",
   "version": "0.0.0",
   "description": "",
-  "main": "lib/index.js",
-  "scripts": {
-    "watch": "tsc -w",
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "index.ts",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -18,9 +13,5 @@
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.2.0",
     "typeorm": "^0.2.6"
-  },
-  "devDependencies": {
-    "@types/node": "~8.10.18",
-    "typescript": "~2.7.2"
   }
 }
