@@ -1,16 +1,39 @@
+<h1>Books</h1>
+<button type="button" class="btn btn-primary btn-icon" routerLink="edit/0">
+  <clr-icon shape="plus"></clr-icon>
+  Add
+</button>
 <clr-datagrid>
   <clr-dg-column>ID</clr-dg-column>
   <clr-dg-column>Title</clr-dg-column>
   <clr-dg-column>Author</clr-dg-column>
+  <clr-dg-column>Actions</clr-dg-column>
 
   <ng-container *ngIf="books$ | async as books">
     <clr-dg-row *ngFor="let book of books">
       <clr-dg-cell>{{book.id}}</clr-dg-cell>
       <clr-dg-cell>{{book.title}}</clr-dg-cell>
       <clr-dg-cell>{{book.author}}</clr-dg-cell>
+      <clr-dg-action-overflow>
+        <a class="action-item" [routerLink]="'edit/' + book.id">Edit</a>
+        <a class="action-item" (click)="bookToDelete = book">Delete</a>
+      </clr-dg-action-overflow>
     </clr-dg-row>
     <clr-dg-footer>{{books.length}} books</clr-dg-footer>
   </ng-container>
 </clr-datagrid>
 
-<button class="btn btn-primary" routerLink="edit/0">Add</button>
+<clr-modal [(clrModalOpen)]="bookToDelete">
+  <h3 class="modal-title">Delete book "{{bookToDelete?.title}}"</h3>
+  <div class="modal-body">
+    <p>Do you want to delete this book? this action is irreversable.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="delete(bookToDelete)">
+      Yes
+    </button>
+    <button type="button" class="btn" (click)="bookToDelete = null">
+      No
+    </button>
+  </div>
+</clr-modal>

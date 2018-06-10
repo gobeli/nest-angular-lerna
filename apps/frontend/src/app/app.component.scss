@@ -6,3 +6,12 @@
     width: 100%;
   }
 }
+
+.progress--fixed {
+  position: fixed;
+  top: 0;
+  progress {
+    position: absolute;
+    top: 0;
+  }
+}
